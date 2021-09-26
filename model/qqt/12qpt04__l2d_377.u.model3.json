@@ -1,0 +1,12 @@
+{
+  "Version": 3,
+  "FileReferences": {
+    "Moc": "12qpt04__l2d_377.u.moc3",
+    "Textures": [
+      "textures/texture_00.png"
+    ],
+    "Physics": "12qpt04__l2d_377.u.physics3.json",
+    }
+  },
+  "Groups": []
+}
