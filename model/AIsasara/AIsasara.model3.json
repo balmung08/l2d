@@ -1,0 +1,18 @@
+{
+	"Version": 3,
+	"FileReferences": {
+		"Moc": "AIsasara.moc3",
+		"Textures": [
+			"AIsasara.4096/texture_00.png",
+			"AIsasara.4096/texture_01.png"
+		],
+		"Physics": "AIsasara.physics3.json"
+	},
+	"Groups": [
+		{
+			"Target": "Parameter",
+			"Name": "EyeBlink",
+			"Ids": []
+		}
+	]
+}
