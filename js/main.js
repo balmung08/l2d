@@ -25,7 +25,8 @@ class Viewer {
             console.log(name);            
             this.l2d.load(name, this);
         });*/
-        this.l2d.load("Azue Lane(JP)/xianghe_2",this)
+        this.l2d.load("https://cdn.jsdelivr.net/gh/balmung08/l2d/model/xianghe_2",this);
+        //this.l2d.load("Azue Lane(JP)/xianghe_2",this);
         this.app = new PIXI.Application({width:320,height:180,transparent:true});
         let width = 320;
         let height = 180;
@@ -42,6 +43,7 @@ class Viewer {
 
             this.model.update(deltaTime);
             this.model.masks.update(this.app.renderer);
+
         });
         window.onresize = (event) => {
             if (event === void 0) { event = null; }
@@ -61,77 +63,31 @@ class Viewer {
                 this.model.masks.resize(this.app.view.width, this.app.view.height);
             
             }
-    this.startAnimation("home","base");
+
         };
-    /*
-this.isClick = false;
-addEventListener('mousedown', (event) => {
+    
+
+   this.isClick = false;
+
+        addEventListener('mousedown', (event) => {
             this.isClick = true;
-            console.log(this.isClick);
         });
-addEventListener('mousemove', (event) => {
+        addEventListener('mousemove', (event) => {
+            
                 this.isClick = false;
                 if (this.model) {
                     this.model.inDrag = true;
                 }
             
+
             if (this.model) {
                 let mouse_x = this.model.position.x - event.clientX;
                 let mouse_y = this.model.position.y - event.clientY;
                 this.model.pointerX = -mouse_x / this.app.view.height;
                 this.model.pointerY = -mouse_y / this.app.view.width;
             }
-            console.log(this.isClick);
         });
-addEventListener('mouseup', (event) => {
-            if (!this.model) {
-                return;
-            }
-
-            if (this.isClick) {
-                if (this.isHit('TouchHead', event.offsetX, event.offsetY)) {
-                    this.startAnimation( "base");
-                    console.log(this.isClick);
-                } else if (this.isHit('TouchSpecial', event.offsetX, event.offsetY)) {
-                    this.startAnimation("touch_special", "base");
-                    console.log(this.isClick);
-                } else if(this.isHit('TouchBody', event.offsetX, event.offsetY)){
-                    const bodyMotions = ["touch_body", "main_1", "main_2", "main_3"];
-                    let currentMotion = bodyMotions[Math.floor(Math.random()*bodyMotions.length)];
-                    this.startAnimation(currentMotion, "base");
-                    console.log(this.isClick);
-                }
-                else {           
-                    this.isClick = false;
-                    this.model.inDrag = false;
-                    return;
-                    }
-            }
-            this.isClick = false;
-            this.model.inDrag = false;
-        });
-    }*/
-    this.isClick = false;
-
-        this.app.view.addEventListener('mousedown', (event) => {
-            this.isClick = true;
-        });
-        this.app.view.addEventListener('mousemove', (event) => {
-            if (this.isClick) {
-                this.isClick = false;
-                if (this.model) {
-                    this.model.inDrag = true;
-                }
-            }
-
-            if (this.model) {
-                let mouse_x = this.model.position.x - event.offsetX;
-                let mouse_y = this.model.position.y - event.offsetY;
-                this.model.pointerX = -mouse_x / this.app.view.height;
-                this.model.pointerY = -mouse_y / this.app.view.width;
-            }
-        });
-        this.app.view.addEventListener('mouseup', (event) => {
+        addEventListener('mouseup', (event) => {
             if (!this.model) {
                 return;
             }
@@ -140,13 +96,16 @@ addEventListener('mouseup', (event) => {
                 if (this.isHit('TouchHead', event.offsetX, event.offsetY)) {
 
                     this.startAnimation("touch_head", "base");
-                } else if (this.isHit('TouchSpecial', event.offsetX, event.offsetY)) {
+                } if (this.isHit('TouchSpecial', event.offsetX, event.offsetY)) {
                     this.startAnimation("touch_special", "base");
-                } else {
+                } if(this.isHit('TouchBody',event.offsetX,event.offsetY)){
                     const bodyMotions = ["touch_body", "main_1", "main_2", "main_3","complete","mail"];
                     let currentMotion = bodyMotions[Math.floor(Math.random()*bodyMotions.length)];
                     this.startAnimation(currentMotion, "base");
                 }
+                else {this.isClick = false;
+            this.model.inDrag = false;
+            return;}
             }
 
             this.isClick = false;

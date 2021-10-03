@@ -39,5 +39,4 @@ var charData = {
     "Shōkaku": "Azue Lane(JP)/xianghe_2",
     "Vampire": "Azue Lane(JP)/xixuegui_4",
     "Zara": "Azue Lane(JP)/zhala_2",
-    "1":"2"
 };
