@@ -25,7 +25,7 @@ class Viewer {
             console.log(name);            
             this.l2d.load(name, this);
         });*/
-        this.l2d.load("Azue Lane(JP)/xianghe_2",this)
+        this.l2d.load("https://cdn.jsdelivr.net/gh/balmung08/l2d/model/xianghe_2",this);
         this.app = new PIXI.Application({width:320,height:180,transparent:true});
         let width = 320;
         let height = 180;
