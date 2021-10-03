@@ -7,7 +7,7 @@ $(document).ready(() => {
 class Viewer {
     constructor (basePath) {
         this.l2d = new L2D(basePath);
-
+//sdgsgsg
         this.canvas = $(".Canvas");
         this.selectCharacter = $(".selectCharacter");
         this.selectAnimation = $(".selectAnimation");
