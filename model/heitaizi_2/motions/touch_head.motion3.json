@@ -3733,17 +3733,6 @@
     },
     {
       "Target": "PartOpacity",
-      "Id": "Part40",
-      "Segments": [
-        0,
-        1,
-        2,
-        3.83,
-        1
-      ]
-    },
-    {
-      "Target": "PartOpacity",
       "Id": "Part23",
       "Segments": [
         0,
@@ -3855,6 +3844,17 @@
     {
       "Target": "PartOpacity",
       "Id": "Part38",
+      "Segments": [
+        0,
+        1,
+        2,
+        3.83,
+        1
+      ]
+    },
+    {
+      "Target": "PartOpacity",
+      "Id": "Part40",
       "Segments": [
         0,
         1,

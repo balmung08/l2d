@@ -4,11 +4,10 @@
     "Duration": 16.0,
     "Fps": 30.0,
     "Loop": true,
-    "AreBeziersRestricted": true,
     "CurveCount": 2,
     "TotalSegmentCount": 3,
     "TotalPointCount": 5,
-    "UserDataCount": 1,
+    "UserDataCount": 0,
     "TotalUserDataSize": 0
   },
   "Curves": [
@@ -18,11 +17,7 @@
       "Segments": [
         0,
         0,
-        1,
-        5.333,
-        30,
-        10.667,
-        60,
+        0,
         16,
         90
       ]
@@ -39,10 +34,5 @@
       ]
     }
   ],
-  "UserData": [
-    {
-      "Time": 0.0,
-      "Value": ""
-    }
-  ]
+  "UserData": []
 }

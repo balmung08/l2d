@@ -3,14 +3,13 @@
   "FileReferences": {
     "Moc": "huonululu_5.moc3",
     "Textures": [
-      "textures/texture_00.png",
-      "textures/texture_01.png"
+      "textures/texture_00.png"
     ],
     "Physics": "huonululu_5.physics3.json",
     "Motions": {
       "": [
         {
-          "File": "motions/mail.motion3.json"
+          "File": "motions/touch_body.motion3.json"
         },
         {
           "File": "motions/wedding.motion3.json"
@@ -50,9 +49,6 @@
         },
         {
           "File": "motions/main_1.motion3.json"
-        },
-        {
-          "File": "motions/touch_body.motion3.json"
         }
       ]
     }
@@ -62,7 +58,15 @@
       "Target": "Parameter",
       "Name": "LipSync",
       "Ids": [
-        "ParamMouthKaiBiwawa"
+        "ParamMouthOpenY"
+      ]
+    },
+    {
+      "Target": "Parameter",
+      "Name": "EyeBlink",
+      "Ids": [
+        "ParamEyeLOpen",
+        "ParamEyeROpen"
       ]
     }
   ]

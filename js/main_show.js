@@ -21,9 +21,8 @@ class Viewer {
             if (event.target.selectedIndex == 0) {
                 return;
             }
-
-            let name = "https://cdn.jsdelivr.net/gh/balmung08/l2d/model/"+event.target.value;
-            console.log(name)
+            let name = event.target.value;
+            console.log(name);
             this.l2d.load(name, this);
         });
 
@@ -60,59 +59,44 @@ class Viewer {
                 this.model.scale = new PIXI.Point((this.model.position.x * 0.6), (this.model.position.x * 0.6));
             }
         };
-   this.isClick = false;
-
-        addEventListener('mousedown', (event) => {
+        this.isClick = false;
+        this.app.view.addEventListener('mousedown', (event) => {
             this.isClick = true;
         });
-        addEventListener('mousemove', (event) => {
-            
+        this.app.view.addEventListener('mousemove', (event) => {
+            if (this.isClick) {
                 this.isClick = false;
                 if (this.model) {
                     this.model.inDrag = true;
                 }
-            
+            }
 
             if (this.model) {
-                let mouse_x = this.model.position.x - event.clientX;
-                let mouse_y = this.model.position.y - event.clientY;
+                let mouse_x = this.model.position.x - event.offsetX;
+                let mouse_y = this.model.position.y - event.offsetY;
                 this.model.pointerX = -mouse_x / this.app.view.height;
                 this.model.pointerY = -mouse_y / this.app.view.width;
             }
         });
-        addEventListener('mouseup', (event) => {
+        this.app.view.addEventListener('mouseup', (event) => {
             if (!this.model) {
                 return;
             }
 
             if (this.isClick) {
                 if (this.isHit('TouchHead', event.offsetX, event.offsetY)) {
-
                     this.startAnimation("touch_head", "base");
-                } if (this.isHit('TouchSpecial', event.offsetX, event.offsetY)) {
+                } else if (this.isHit('TouchSpecial', event.offsetX, event.offsetY)) {
                     this.startAnimation("touch_special", "base");
-                } if(this.isHit('TouchBody',event.offsetX,event.offsetY)){
-                    const bodyMotions = ["touch_body", "main_1", "main_2", "main_3","complete","mail"];
+                } else {
+                    const bodyMotions = ["touch_body", "main_1", "main_2", "main_3"];
                     let currentMotion = bodyMotions[Math.floor(Math.random()*bodyMotions.length)];
                     this.startAnimation(currentMotion, "base");
                 }
-                else {this.isClick = false;
-            this.model.inDrag = false;
-                       this.isClick = false;
-            this.model.inDrag = false;
-                let mouse_x = this.model.position.x - event.clientX;
-                let mouse_y = this.model.position.y - event.clientY;
-                this.model.pointerX = -mouse_x / this.app.view.height;
-                this.model.pointerY = -mouse_y / this.app.view.width;
-            return;}
             }
 
             this.isClick = false;
             this.model.inDrag = false;
-                let mouse_x = this.model.position.x - event.clientX;
-                let mouse_y = this.model.position.y - event.clientY;
-                this.model.pointerX = -mouse_x / this.app.view.height;
-                this.model.pointerY = -mouse_y / this.app.view.width;
         });
     }
 
@@ -257,4 +241,3 @@ class Viewer {
         return ((left <= tx) && (tx <= right) && (top <= ty) && (ty <= bottom));
     }
 }
-
