@@ -7,11 +7,11 @@ $(document).ready(() => {
 class Viewer {
     constructor (basePath) {
         this.l2d = new L2D(basePath);
-//sdgsgsg
+
         this.canvas = $(".Canvas");
         this.selectCharacter = $(".selectCharacter");
         this.selectAnimation = $(".selectAnimation");
-/*
+
         let stringCharacter = "<option>Select</option>";
         for (let val in charData) {
             stringCharacter+= '<option value="' + charData[val] + '">' + val + '</option>';
@@ -21,20 +21,17 @@ class Viewer {
             if (event.target.selectedIndex == 0) {
                 return;
             }
-            let name = event.target.value;
-            console.log(name);            
+
+            let name = "https://cdn.jsdelivr.net/gh/balmung08/l2d/model/"+event.target.value;
+            console.log(name)
             this.l2d.load(name, this);
-        });*/
-        this.l2d.load("https://cdn.jsdelivr.net/gh/balmung08/l2d/model/xianghe_2",this);
+        });
 
-        //this.l2d.load("Azue Lane(JP)/xianghe_2",this);
-
-        this.app = new PIXI.Application({width:320,height:180,transparent:true});
-        let width = 320;
-        let height = 180;
-        this.app.view.style.width = "1px";
-        this.app.view.style.height = "1px";
-        this.app.view.style.position = "fixed";
+        this.app = new PIXI.Application(1280, 720, { backgroundColor: 0xffffff });
+        let width = window.innerWidth;
+        let height = (width / 16.0) * 9.0;
+        this.app.view.style.width = width + "px";
+        this.app.view.style.height = height + "px";
         this.app.renderer.resize(width, height);
         this.canvas.html(this.app.view);
 
@@ -45,30 +42,24 @@ class Viewer {
 
             this.model.update(deltaTime);
             this.model.masks.update(this.app.renderer);
-
         });
         window.onresize = (event) => {
             if (event === void 0) { event = null; }
-            let width = 400;
-            let height = 225;
-            this.app.view.style.width = "400px";/*368/207*/
-            this.app.view.style.height = "225px";
-            this.app.view.style.position = "fixed";
-            this.app.view.style.left ="-20px";
-            this.app.view.style.bottom ="0px";
-
+            let width = window.innerWidth;
+            let height = (width / 16.0) * 9.0;
+            this.app.view.style.width = width + "px";
+            this.app.view.style.height = height + "px";
             this.app.renderer.resize(width, height);
 
             if (this.model) {
-                this.model.position = new PIXI.Point((width * 0.4), (height * 0.32));
-                this.model.scale = new PIXI.Point((this.model.position.x * 0.1), (this.model.position.x * 0.1));
+                this.model.position = new PIXI.Point((width * 0.5), (height * 0.5));
+                this.model.scale = new PIXI.Point((this.model.position.x * 0.06), (this.model.position.x * 0.06));
                 this.model.masks.resize(this.app.view.width, this.app.view.height);
-            
             }
-
+            if(this.model.height <= 200) {
+                this.model.scale = new PIXI.Point((this.model.position.x * 0.6), (this.model.position.x * 0.6));
+            }
         };
-    
-
    this.isClick = false;
 
         addEventListener('mousedown', (event) => {
